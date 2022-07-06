@@ -40,7 +40,7 @@ export default function SearchBar() {
             }}>
                 <AntDesign name='clockcircle' size={11}
                     style={{marginRight: 6}} />
-                <Text>Search //min: 49.39</Text>
+                <Text>Search</Text>
             </View>
         )}
 
