@@ -1,13 +1,19 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 export default function SearchBar() {
+    const ref = useRef();
+    useEffect(() => {
+        ref.current?.setAddressText('Some Text');
+      }, []);
   return (
     <View style={{marginTop:15, flexDirection:'row',
         }}>
         <GooglePlacesAutocomplete placeholder='Search'
+
+
         styles={{
         textInput: {
             backgroundColor:'#eee',
@@ -38,9 +44,11 @@ export default function SearchBar() {
                 alignItems: 'center',
 
             }}>
-                <AntDesign name='clockcircle' size={11}
+                <AntDesign name='clockcircle' size={11}r
                     style={{marginRight: 6}} />
-                <Text>Search</Text>
+                <Text         onPress={(data, details = null) => {
+            console.log(data, details);
+          }}>Search</Text>
             </View>
         )}
 
