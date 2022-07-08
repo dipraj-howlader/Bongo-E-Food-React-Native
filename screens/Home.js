@@ -15,7 +15,7 @@ const YELP_API_KEY =
   "j2vVtit2J_8JvHpHOiMZ-fSoGFFEjreuQvkaz-_UT05uDdaD8IZNAP_8rmGgRlzpjLxDI8XqciA20U_dB5yPhHX_UIPMVkAHaOphgflB7jm5LCCnmAxDxfLuRnrGYnYx";
 // const Google_api ='AIzaSyDPD2m1dotJbryf0bOJrGRdKt5x6OOmzS8';
 
-export default function Home() {
+export default function Home({ navigation}) {
   const [restaurantData, setRestaurantData] = useState(localRestaurants);
   const [activeTab, setActiveTab] = useState("Delivery");
 
@@ -49,7 +49,7 @@ export default function Home() {
       </View>
       <ScrollView showsHorizontalScrollIndicator={false}>
         <Categories></Categories>
-        <RestaurantItems restaurantData={restaurantData}></RestaurantItems>
+        <RestaurantItems restaurantData={restaurantData} navigation={ navigation}></RestaurantItems>
       </ScrollView>
       {/* <Divider width={1} /> */}
       <BottomTabs> </BottomTabs>

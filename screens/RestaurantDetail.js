@@ -7,10 +7,10 @@ import MenuItems from '../components/RestaurantDetail/MenuItems'
 // import SafeAreaAndroid from '../components/Home/SafeAreaAndroid';
 
 
-export default function RestaurantDetail() {
+export default function RestaurantDetail({route}) {
   return (
     <View >
-     <About />
+     <About route={route} />
      <Divider width={1.8} style={{
         marginVertical: 10,
      }} />

@@ -1,6 +1,7 @@
 import { View, Text, Image,ScrollView, StyleSheet,StatusBar,Platform } from 'react-native'
 import React from 'react'
 import SafeAreaAndroid from '../../components/Home/SafeAreaAndroid';
+import { Divider } from 'react-native-elements/dist/divider/Divider';
 
 const foods = [
     {
@@ -46,7 +47,10 @@ const foods = [
     menuItemStyle: {
       flexDirection: "row",
       justifyContent: "space-between",
-      margin: 15,
+      margin: 5,
+      backgroundColor:'lightgray',
+      padding: 10,
+      borderRadius: 10
     },
   
     titleStyle: {
@@ -76,7 +80,11 @@ export default function MenuItems() {
     <View key={index} style={styles.menuItemStyle}>
       <FoodInfo food={food} />
       <FoodImage food={food}/>
+      <Divider width={0.5} orientation="vertical" style={{
+        marginHorizontal:20
+      }} />
     </View>  
+
       ))
     }
     </ScrollView>
@@ -108,3 +116,4 @@ style={{
   />
   </View>
 )
+// 2:49

@@ -32,10 +32,13 @@ export const localRestaurants = [
   },
 ];
 
-export default function RestaurantItems(props) {
+export default function RestaurantItems({ navigation, ...props }) {
   return (
-    <TouchableOpacity activeOpacity={1} style={{ marginBottom: 20 }}>
+   <>
       {props.restaurantData.map((restaurant, index) => (
+        <TouchableOpacity activeOpacity={1} style={{ marginBottom: 10 }} onPress={
+          () => navigation.navigate("RestaurantDetail")
+        }>
         <View
           style={{
             padding: 15,
@@ -49,8 +52,9 @@ export default function RestaurantItems(props) {
             index={index}
           />
         </View>
+            </TouchableOpacity>
       ))}
-    </TouchableOpacity>
+</>
   );
 }
 // const Consoless = (props) =>{
@@ -111,3 +115,4 @@ const RestaurantInfo = (props) => (
     </View>
   </View>
 );
+// 3:16:09
