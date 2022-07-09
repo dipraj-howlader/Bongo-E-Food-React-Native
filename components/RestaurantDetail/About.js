@@ -2,34 +2,36 @@ import { View, Text, Image } from "react-native";
 import React from "react";
 
 const yelpRestaurantInfo = {
-  name :'Farhouse Kitchien Thai Cuisine',
-      image:
-      "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg",
-      price : '$$',
-      reviews: '1500',
-      rating: 5,
-      categories : [{
-        title : "Thai"},{
-          title: 'Comfort Food'
-        }
-      ],
-
-   
+  name: "Farhouse Kitchien Thai Cuisine",
+  image:
+    "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg",
+  price: "$$",
+  reviews: "1500",
+  rating: 5,
+  categories: [
+    {
+      title: "Thai",
+    },
+    {
+      title: "Comfort Food",
+    },
+  ],
 };
-
-const {name, image, price, rating, categories,reviews } = yelpRestaurantInfo; 
-
-const formattedCategories = categories.map((cat) => cat.title).join(" • ");
-
-const description = `${formattedCategories} ${
-  price ? " • " + price : ""
-} • 🎫 • ${rating} ⭐ (${reviews}+)`;
 
 // const images =   "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg";
 // const title = "Farhouse Kitchien Thai Cuisine";
 // const description = " Thai • Comfort • Food • $$ • 🎫 • 4⭐(2913+)";
 
 export default function About(props) {
+  const { name, image, price, rating, categories, reviews } =
+    props.route.params;
+
+  const formattedCategories = categories.map((cat) => cat.title).join(" • ");
+
+  const description = `${formattedCategories} ${
+    price ? " • " + price : ""
+  } • 🎫 • ${rating} ⭐ (${reviews}+)`;
+
   return (
     <View>
       <RestaurantImage image={image} />

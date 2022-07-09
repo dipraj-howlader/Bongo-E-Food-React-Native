@@ -36,20 +36,29 @@ export default function RestaurantItems({ navigation, ...props }) {
   return (
    <>
       {props.restaurantData.map((restaurant, index) => (
-        <TouchableOpacity activeOpacity={1} style={{ marginBottom: 10 }} onPress={
-          () => navigation.navigate("RestaurantDetail")
-        }>
+        <TouchableOpacity key={index} activeOpacity={1} style={{ marginBottom: 10 }} onPress={
+          () => navigation.navigate("RestaurantDetail",{
+            name : restaurant.name,
+            image : restaurant.image_url,
+            price : restaurant.price,
+            reviews: restaurant.review_count,
+            rating: restaurant.rating,
+            categories: restaurant.categories
+          })
+        }
+        
+        >
         <View
           style={{
             padding: 15,
             backgroundColor: "white",
           }}
         >
-          <RestaurantImage image={restaurant.image_url} index={index} />
+          <RestaurantImage image={restaurant.image_url} key={index} />
           <RestaurantInfo
             name={restaurant.name}
             rating={restaurant.rating}
-            index={index}
+            key={index}
           />
         </View>
             </TouchableOpacity>
@@ -67,7 +76,7 @@ const RestaurantImage = (props) => (
         uri: props.image,
       }}
       style={{ height: 180 }}
-    />
+    /> 
     <TouchableOpacity style={{ position: "absolute", right: 20, top: 20 }}>
       <MaterialCommunityIcons name="heart-outline" size={30} color="#fff" />
     </TouchableOpacity>
