@@ -94,16 +94,6 @@ export default function ViewCart({navigation}) {
         <>
 
           <View style={styles.modalContainer}>
-          <Text style={{
-          color:'white',
-          alignSelf:'center',
-          // justifyContent:'center
-          paddingBottom:135
-          // backgroundColor: 'black'
-         ,
-         fontSize:10 
-        }}>Dipraj Howlader,
-         email: dipraj17@cse.pstu.ac.bd </Text>
             <View style={styles.modalCheckoutContainer}>
               <Text style={styles.restaurantName}>{restaurantName}</Text>
               {items.map((item, index) => (
@@ -111,7 +101,7 @@ export default function ViewCart({navigation}) {
               ))}
               <View style={styles.subtotalContainer}>
                 <Text style={styles.subtotalText}>Subtotal</Text>
-                <Text>{totalUSD}</Text>
+                <Text>${totalUSD}</Text>
               </View>
               <View style={{ flexDirection: "row", justifyContent: "center" }}>
                 <TouchableOpacity
@@ -138,7 +128,7 @@ export default function ViewCart({navigation}) {
                       fontSize: 15,
                       top: 17,
                     }}
-                  >
+                  >$
                     {total ? totalUSD : ""}
                   </Text>
                 </TouchableOpacity>
@@ -190,7 +180,7 @@ export default function ViewCart({navigation}) {
         >
       <Text style={{color:'white',
     fontSize:18,
-    }}> ViewCart      {totalUSD}</Text>
+    }}> ViewCart      ${totalUSD}</Text>
     </TouchableOpacity>
     </View>
     </View>

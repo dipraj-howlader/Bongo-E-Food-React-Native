@@ -1,12 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, SafeAreaView, ScrollView } from "react-native";
+import { View, Text, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
 import LottieView from "lottie-react-native";
-import firebase from "../firebase";
+import  firebase from "../firebase";
 import MenuItems from "../components/RestaurantDetail/MenuItems";
 import SafeAreaAndroid from "../components/Home/SafeAreaAndroid";
+import { useNavigation } from '@react-navigation/core'
 
 export default function OrderCompleted() {
+
+  const navigation = useNavigation();
+  const auth = firebase.auth();
+
+
+  const handleSignOut = () => {
+    auth
+      .signOut()
+      .then(() => {
+        navigation.replace("LoginScreen")
+      })
+      .catch(error => alert(error.message))
+  }
+
+
   const [lastOrder, setLastOrder] = useState({
     items: [
       {
@@ -69,7 +85,7 @@ export default function OrderCompleted() {
           loop={false}
         />
         <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-          Your order at {restaurantName} has been placed for {totalUSD}
+        "{auth.currentUser?.email}" order at {restaurantName} has been placed for ${totalUSD}
         </Text>
         <ScrollView
           showsHorizontalScrollIndicator={false}
@@ -82,13 +98,48 @@ export default function OrderCompleted() {
             marginLeft={10}
           />
         </ScrollView>
-        <LottieView
+        <View>
+      <TouchableOpacity
+        onPress={handleSignOut}
+
+      >
+        <Text style={styles.button} >Sign out</Text>
+      </TouchableOpacity>
+    </View>
+        {/* <LottieView
           style={{height: 120, alignSelf: "center", }}
           source={require("../assets/animations/cooking.json")}
           autoPlay
           speed={0.5}
-        />
+        /> */}
       </View>
     </View>
   );
 }
+
+
+
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+   button: {
+    backgroundColor: '#0782F9',
+    // width: '100%',
+    padding: 10,
+    borderRadius: 10,
+    alignItems: 'center',
+    fontWeight:"400",
+    fontSize: 15,
+    marginBottom: 20,
+  },
+  buttonText: {
+    color: 'black',
+    fontWeight: '700',
+    fontSize: 16,
+  },
+})
