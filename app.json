@@ -1,0 +1,33 @@
+{
+    "expo": {
+      "name": "Bongo E Food",
+      "slug": "bongo-e-food",
+      "version": "1.0.0",
+      "orientation": "portrait",
+      "icon": "./assets/images/Bongo.png",
+      "splash": {
+        "image": "./assets/images/Bongo.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#ffffff"
+      },
+      "updates": {
+        "fallbackToCacheTimeout": 0
+      },
+      "assetBundlePatterns": [
+        "**/*"
+      ],
+      "ios": {
+        "supportsTablet": true
+      },
+      "android": {
+        "versionCode":1,    
+        "adaptiveIcon": {
+          "foregroundImage": "./assets/images/Bongo.png",
+          "backgroundColor": "#FFFFFF"
+        }
+      },
+      "web": {
+        "favicon": "./assets/images/Bongo.png"
+      }
+    }
+}
